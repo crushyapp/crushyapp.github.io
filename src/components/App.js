@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
-import Counter from '../containers/Counter';
-import Controls from '../containers/Control';
+import { connect } from 'react-redux';
+
+import { signin } from '../actions';
+import { getUrlVars } from '../ders_func_lib';
+import MainPage from './MainPage';
+
 
 const About = (props) => {
   return <div> All there is to know about me </div>;
-};
-const Welcome = (props) => {
-  return (
-    <div>
-    Welcome
-      <Counter />
-      <Controls />
-    </div>);
 };
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
@@ -37,13 +33,24 @@ const Nav = (props) => {
 };
 
 class App extends Component {
+  componentDidMount() {
+    const params = getUrlVars();
+    console.log(params);
+    if (params.code) {
+      this.props.signin(params.code);
+    }
+  }
+
   render() {
     return (
       <Router>
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" component={Welcome} />
+            <Route exact
+              path="/"
+              component={MainPage}
+            />
             <Route path="/about" component={About} />
             <Route exact path="/test/:id" component={Test} />
             <Route component={FallBack} />
@@ -54,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, { signin })(App);

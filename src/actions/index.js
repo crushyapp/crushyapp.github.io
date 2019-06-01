@@ -1,19 +1,25 @@
+import axios from 'axios';
+
+export const ROOT_URL = 'https://second-chance-matches.herokuapp.com/api';
+
 export const ActionTypes = {
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
+  AUTHENTICATE: 'AUTHENTICATE',
 };
 
+export function signin(code, callback) {
+  console.log('Signing in user...');
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signin`, { code }).then((response) => {
+      console.log('sign in res', response);
+      // localStorage.setItem('token', response.data.token);
+      dispatch({ type: ActionTypes.AUTHENTICATE });
 
-export function increment() {
-  return {
-    type: ActionTypes.INCREMENT,
-    payload: null,
-  };
-}
-
-export function decrement() {
-  return {
-    type: ActionTypes.DECREMENT,
-    payload: null,
+      if (callback) {
+        callback();
+      }
+    }).catch((error) => {
+      console.log(error, 'sign in failed');
+      // dispatch(authError(`Sign In Failed: ${error}`));
+    });
   };
 }
