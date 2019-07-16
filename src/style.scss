@@ -1,17 +1,151 @@
+$primary: #E33E5C;
+
 body, html {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+  font-family: "Helvetica", neue;
+  background-color: white;
+  height: 100%;
+  margin: 0px;
+  padding: 0;
+}
+
+// make sure main div is full width
+body > div {
   height: 100%;
 }
 
-.logo {
-  background-image: url('img/logo.png');
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: contain;
+.header-background {
+  background-color: $primary;
+  width: 100%;
+  height: 60%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  padding-bottom: 30px;
 }
 
-.active {
-  color: pink;
+.center-trump {
+  margin-top: 40px;
+  width: 20%;
+  border-radius: 50%;
+  border: 6px solid white;
+}
+
+.trump-subtitle {
+  color: white;
+  font-size: 3em;
+  margin-top: 30px;
+}
+
+.trump-subsubtitle {
+  color: white;
+  font-size: 1.15em !important;
+  margin-top: -20px;
+  text-align: center !important;
+}
+
+// .sign-up-button {
+//   margin-top: 50px !important;
+//   background-color: #2196F3 !important;
+//   color: white !important;
+//   font-family: "Helvetica", neue !important;
+//   font-size: 1.1em !important;
+//   margin-left: 1vw !important;
+//   margin-right:  1vw !important;
+// }
+
+// .unsubscribe-button {
+//   margin-top: 50px !important;
+//   background-color: white !important;
+//   color: #2196F3 !important;
+//   font-family: "Helvetica", neue !important;
+//   font-size: 1.1em !important;
+//   margin-left: 1vw !important;
+//   margin-right:  1vw !important;
+// }
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.divider {
+  // margin-top: 100px;
+  margin-bottom: 30px;
+  margin-right: 50px;
+  margin-left: 50px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.footer-link {
+  color:#34495e !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: $primary !important;
+}
+
+.top-aligned {
+  top: 0 !important;
+  margin-top: -500px !important;
+}
+
+.invisible {
+  position:absolute;
+  visibility: hidden;
+}
+
+.modal-header{
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.modal-text {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.insta-default {
+  margin: auto;
+  & a {
+    padding: 15px 30px;
+    display: block;
+    background-color: $primary;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
+    color: #FFF;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all .3s;
+    &:hover {
+      box-shadow: 0 0 4px 3px rgba(0,0,0,0.15);
+      transition: all .3s;
+    }
+    & i {
+      color: #FFF;
+      font-size: 18px;
+    }
+  }
 }
