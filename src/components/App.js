@@ -9,12 +9,13 @@ import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
 import { signin } from '../actions';
 import { getUrlVars } from '../ders_func_lib';
 import MainPage from './MainPage';
+import Profile from './Profile';
 
 library.add(faInstagram);
 
-const FallBack = (props) => {
-  return <div>URL Not Found</div>;
-};
+// const FallBack = (props) => {
+//   return <div>URL Not Found</div>;
+// };
 
 class App extends Component {
   componentDidMount() {
@@ -30,11 +31,9 @@ class App extends Component {
       <Router>
         <div className="full-height">
           <Switch>
-            <Route exact
-              path="/"
-              component={MainPage}
-            />
-            <Route component={FallBack} />
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/profile" component={Profile} />
+            <Route render={() => (<div className="pageNotFound">404 page not found</div>)} />
           </Switch>
         </div>
       </Router>

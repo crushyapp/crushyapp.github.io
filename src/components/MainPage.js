@@ -38,7 +38,7 @@ class MainPage extends Component {
 
         <div className="footer-container">
           <div id="privacy-policy-link" className="footer-link" >Privacy Policy</div>
-          <a href="#" className="footer-link">Contact</a>
+          <a href="#" onClick={() => { this.props.history.push('/profile'); }} className="footer-link">Contact</a>
         </div>
 
       </div>
