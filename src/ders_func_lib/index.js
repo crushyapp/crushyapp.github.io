@@ -1,3 +1,4 @@
+// Fetches variables from instagram in the redirected url (e.g. code)
 export function getUrlVars() {
   const vars = {};
   window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {

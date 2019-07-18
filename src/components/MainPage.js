@@ -17,9 +17,9 @@ class MainPage extends Component {
     return (
       <div className="full-height">
         <div className="header-background">
-          <img src={require('../img/icon.jpg')} alt="Love" className="center-trump" />
-          <p className="trump-subtitle">Second Chance Matches</p>
-          <p className="trump-subsubtitle">Add your crush&#39;s Instagram handle. If they add you back we&#39;ll let you know ;)</p>
+          <img src={require('../img/icon.jpg')} alt="Love" className="center-content" />
+          <p className="subtitle">Second Chance Matches</p>
+          <p className="subsubtitle">Add your crush&#39;s Instagram handle. If they add you back we&#39;ll let you know ;)</p>
         </div>
 
         <div className="sign-up-container">

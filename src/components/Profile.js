@@ -47,12 +47,12 @@ class Profile extends Component {
                     />
                     <Button className="send-notif-button"
                       onClick={() => {
-                      if (isValidPhoneNumber(this.state.enteringCrushPhone)) {
-                        // TODO send notification to crush
-                        // only allow user to send one notif
+                        if (isValidPhoneNumber(this.state.enteringCrushPhone)) {
+                          // TODO send notification to crush
+                          // only allow user to send one notif
 
-                      }
-                    }}
+                        }
+                      }}
                     >Send text
                     </Button>
                   </div>
@@ -64,11 +64,11 @@ class Profile extends Component {
                     />
                     <Button className="send-notif-button"
                       onClick={() => {
-                      if (isValidEmail(this.state.enteringCrushEmail)) {
-                        // TODO send email to crush1
-                        // only allow user to send once
-                      }
-                    }}
+                        if (isValidEmail(this.state.enteringCrushEmail)) {
+                          // TODO send email to crush1
+                          // only allow user to send once
+                        }
+                      }}
                     >Send email
                     </Button>
                   </div>
@@ -77,6 +77,7 @@ class Profile extends Component {
             </Modal.Content>
           </Modal.Content>
         </Modal>
+
         <div className="red-background">
           <div className="profile-nav">
             <img src={require('../img/icon.jpg')} alt="Love" className="logo" />
@@ -86,7 +87,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className="enter-crush-container">
-            <p className="trump-subtitle">Add a Crush</p>
+            <p className="subtitle">Add a Crush</p>
             <input className="input-bar"
               placeholder="@johnsmith"
               onChange={(event) => { this.setState({ enteringCrush: event.target.value }); }}
