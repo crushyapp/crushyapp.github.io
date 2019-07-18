@@ -9,6 +9,7 @@ import { isValidPhoneNumber, isValidEmail } from '../ders_func_lib';
 // import $ from 'jquery';
 
 // import PrivacyModal from './PrivacyModal';
+import { fetchUserData } from '../actions';
 
 
 class Profile extends Component {
@@ -20,6 +21,12 @@ class Profile extends Component {
       enteringCrushPhone: '',
       enteringCrushEmail: '',
     };
+  }
+
+  componentDidMount() {
+    if (this.props.authenticated) {
+      this.props.fetchUserData();
+    }
   }
 
   render() {
@@ -97,10 +104,10 @@ class Profile extends Component {
               aria-label="Add"
               className="add-crush-button"
               onClick={() => {
-              // TODO make call to backend
-              if (true /* added user has not signed up yet */) {
-                this.setState({ isNotifyAddedUserModalOpen: true });
-              }
+                // TODO make call to backend
+                if (true /* added user has not signed up yet */) {
+                  this.setState({ isNotifyAddedUserModalOpen: true });
+                }
             }}
             >
               Add
@@ -128,4 +135,11 @@ class Profile extends Component {
   }
 }
 
-export default withRouter(connect(null, { })(Profile));
+const mapStateToProps = state => (
+  {
+    authenticated: state.auth.authenticated,
+    id: state.auth.id,
+  }
+);
+
+export default withRouter(connect(mapStateToProps, { fetchUserData })(Profile));

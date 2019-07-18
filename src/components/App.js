@@ -17,8 +17,8 @@ library.add(faInstagram);
 class App extends Component {
   componentDidMount() {
     const params = getUrlVars();
-    console.log(params);
     if (params.code) {
+      console.log(params);
       this.props.signin(params.code);
     }
   }

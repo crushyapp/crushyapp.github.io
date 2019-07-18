@@ -24,7 +24,8 @@ class MainPage extends Component {
 
         <div className="sign-up-container">
           <div className="insta-default">
-            <a href="https://www.instagram.com/oauth/authorize/?client_id=06b1bbf83926467a8a44fc3678430a64&redirect_uri=http://second-chances.surge.sh&response_type=code" className="insta-default">Sign in with Instagram <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" /></a>
+            {/* TODO REDIRECT URI */}
+            <a href="https://www.instagram.com/oauth/authorize/?client_id=06b1bbf83926467a8a44fc3678430a64&redirect_uri=http://localhost:8080&response_type=code" className="insta-default">Sign in with Instagram <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" /></a>
           </div>
         </div>
         <Footer />
