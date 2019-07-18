@@ -24,9 +24,9 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    if (this.props.authenticated) {
-      this.props.fetchUserData();
-    }
+    // if (this.props.authenticated) {
+    //   this.props.fetchUserData();
+    // }
   }
 
   render() {
@@ -100,7 +100,7 @@ class Profile extends Component {
               onChange={(event) => { this.setState({ enteringCrush: event.target.value }); }}
               value={this.state.enteringCrush}
             />
-            <Button variant="extendedFab"
+            <Button variant="text"
               aria-label="Add"
               className="add-crush-button"
               onClick={() => {

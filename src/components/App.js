@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
 
-import { signin } from '../actions';
-import { getUrlVars } from '../ders_func_lib';
+// import { signin } from '../actions';
+// import { getUrlVars } from '../ders_func_lib';
 import MainPage from './MainPage';
 import Profile from './Profile';
 
@@ -15,14 +15,6 @@ import Profile from './Profile';
 library.add(faInstagram);
 
 class App extends Component {
-  componentDidMount() {
-    const params = getUrlVars();
-    if (params.code) {
-      console.log(params);
-      this.props.signin(params.code);
-    }
-  }
-
   render() {
     return (
       <Router>
@@ -38,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { signin })(App);
+export default connect(null, { })(App);

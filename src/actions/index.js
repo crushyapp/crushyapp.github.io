@@ -17,6 +17,7 @@ export function signin(code, history, callback) {
       dispatch({ type: ActionTypes.AUTHENTICATE, payload: response.data.id });
 
       history.push('/profile');
+
       if (callback) {
         callback();
       }

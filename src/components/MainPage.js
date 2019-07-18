@@ -3,7 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { signin } from '../actions';
 import Footer from './Footer';
+import { getUrlVars } from '../ders_func_lib';
 // import { Modal } from 'semantic-ui-react';
 // import Button from '@material-ui/core/Button';
 
@@ -13,7 +15,16 @@ class MainPage extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    const params = getUrlVars();
+    if (params.code) {
+      console.log('params:', params);
+      this.props.signin(params.code, this.props.history);
+    }
+  }
+
   render() {
+    // console.log('history:', this.props.history);
     return (
       <div className="full-height">
         <div className="header-background">
@@ -34,4 +45,4 @@ class MainPage extends Component {
   }
 }
 
-export default withRouter(connect(null, { })(MainPage));
+export default withRouter(connect(null, { signin })(MainPage));
