@@ -86,12 +86,7 @@ body > div {
   margin-top: -500px !important;
 }
 
-.invisible {
-  position:absolute;
-  visibility: hidden;
-}
-
-.modal-header{
+.modal-header {
   text-align: center;
   font-size: 1.5em;
 }
@@ -125,6 +120,10 @@ body > div {
   }
 }
 
+.priv-modal-break {
+  margin-bottom: 20px;
+}
+
 // ######### PROFILE PAGE ######## //
 
 .profile-nav {
@@ -151,8 +150,23 @@ body > div {
   // margin-top: 10px;
 }
 
-.username-nav {
+.user-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
   margin-right: 15px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.username-nav {
+  margin-right: 10px;
   // margin-top: 10px;
 }
 
@@ -192,7 +206,7 @@ body > div {
   justify-content: space-around;
   padding-top: 30px;
   padding-bottom: 100px;
-  min-height: 35%;
+  min-height: 30%;
 }
 
 .crushes-container {
@@ -205,6 +219,37 @@ body > div {
   margin-bottom: 13px;
 }
 
-.min-height-10 {
-  min-height: 5%;
+.send-user-notif-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.crush-info-input-bar {
+  // margin-bottom: 15px;
+  width: 40%;
+  height: 35px;
+  outline-width: 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em !important;
+  text-align: center;
+  box-shadow: 0 0 1em 0.25em rgba(0,0,0,0.05);
+}
+
+.crush-info-input-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.send-notif-button {
+  background-color: $primary !important;
+  color: white !important;
+  font-size: .7em !important;
+  margin-left: 10px !important;
 }

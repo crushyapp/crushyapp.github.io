@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import $ from 'jquery';
 
-import PrivacyModal from './PrivacyModal';
+import Footer from './Footer';
+// import { Modal } from 'semantic-ui-react';
+// import Button from '@material-ui/core/Button';
 
 
 class MainPage extends Component {
@@ -13,16 +13,9 @@ class MainPage extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    $('#privacy-policy-link').on('click', () => {
-      document.getElementById('privacy-policy').click();
-    });
-  }
-
   render() {
     return (
       <div className="full-height">
-        <PrivacyModal className="top-aligned" />
         <div className="header-background">
           <img src={require('../img/icon.jpg')} alt="Love" className="center-trump" />
           <p className="trump-subtitle">Second Chance Matches</p>
@@ -34,13 +27,7 @@ class MainPage extends Component {
             <a href="https://www.instagram.com/oauth/authorize/?client_id=06b1bbf83926467a8a44fc3678430a64&redirect_uri=http://second-chances.surge.sh&response_type=code" className="insta-default">Sign in with Instagram <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" /></a>
           </div>
         </div>
-        <hr className="divider" />
-
-        <div className="footer-container">
-          <div id="privacy-policy-link" className="footer-link" >Privacy Policy</div>
-          <a href="#" onClick={() => { this.props.history.push('/profile'); }} className="footer-link">Contact</a>
-        </div>
-
+        <Footer />
       </div>
     );
   }
