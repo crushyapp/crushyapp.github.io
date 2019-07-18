@@ -14,10 +14,6 @@ import Profile from './Profile';
 
 library.add(faInstagram);
 
-// const FallBack = (props) => {
-//   return <div>URL Not Found</div>;
-// };
-
 class App extends Component {
   componentDidMount() {
     const params = getUrlVars();
