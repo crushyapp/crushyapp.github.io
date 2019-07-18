@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
 
+import { ToastContainer } from 'react-toastify';
+
 // import { signin } from '../actions';
 // import { getUrlVars } from '../ders_func_lib';
 import MainPage from './MainPage';
@@ -24,7 +26,9 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route render={() => (<div className="pageNotFound">404 page not found</div>)} />
           </Switch>
+          <ToastContainer />
         </div>
+
       </Router>
     );
   }

@@ -1,4 +1,5 @@
 $primary: #E33E5C;
+$light-grey: #7f8c8d;
 
 body, html {
   font-family: "Helvetica", neue;
@@ -181,7 +182,7 @@ body > div {
   // justify-content: center;
   align-items: center;
   padding-top: 100px;
-  padding-bottom: 150px;
+  padding-bottom: 110px;
 }
 
 .input-bar{
@@ -201,6 +202,7 @@ body > div {
   color: $primary !important;
   // font-family: "Helvetica", neue !important;
   font-size: 1.1em !important;
+  margin-bottom: 40px !important;
 }
 
 .crush-info-container {
@@ -255,4 +257,9 @@ body > div {
   color: white !important;
   font-size: .7em !important;
   margin-left: 10px !important;
+}
+
+.not-entered {
+  font-style: italic;
+  color: $light-grey;
 }

@@ -9,7 +9,7 @@ import { isValidPhoneNumber, isValidEmail } from '../ders_func_lib';
 // import $ from 'jquery';
 
 // import PrivacyModal from './PrivacyModal';
-import { fetchUserData } from '../actions';
+import { fetchUserData, addCrush, sendNotificationToCrush, NotifTypes } from '../actions';
 
 
 class Profile extends Component {
@@ -20,24 +20,49 @@ class Profile extends Component {
       enteringCrush: '',
       enteringCrushPhone: '',
       enteringCrushEmail: '',
+      profilePicture: '',
+      crushes: [],
+      matches: [],
+      username: '',
+      numCrushedOnUser: 0,
     };
+    this.syncLocalStateWithReduxState = this.syncLocalStateWithReduxState.bind(this);
   }
 
+
   componentDidMount() {
-    // if (this.props.authenticated) {
-    //   this.props.fetchUserData();
-    // }
+    if (this.props.authenticated) {
+      this.props.fetchUserData(this.props.id, () => {
+        this.syncLocalStateWithReduxState();
+      });
+    }
+  }
+
+  syncLocalStateWithReduxState() {
+    this.setState({
+      profilePicture: this.props.profile_picture || '',
+      crushes: this.props.crushes || [],
+      matches: this.props.matches || [],
+      username: this.props.username || '',
+      numCrushedOnUser: this.props.num_crushed_on_user || 0,
+    });
   }
 
   render() {
-    const crushes = ['crush1', 'crush2', 'crush3'];
     return (
       <div className="full-height">
         <Modal
           open={this.state.isNotifyAddedUserModalOpen}
           onOpen={() => { this.setState({ isNotifyAddedUserModalOpen: true }); }}
-          onClose={() => { this.setState({ isNotifyAddedUserModalOpen: false }); }}
-          trigger={(<span />)}
+          onClose={() => {
+           this.setState({
+             isNotifyAddedUserModalOpen: false,
+             enteringCrush: '',
+             enteringCrushEmail: '',
+             enteringCrushPhone: '',
+           });
+          }}
+          trigger={(<span />) /* no visible trigger */}
         >
           <Modal.Content>
             <Modal.Header className="modal-header">{`${this.state.enteringCrush} has not signed up yet`}</Modal.Header>
@@ -55,9 +80,8 @@ class Profile extends Component {
                     <Button className="send-notif-button"
                       onClick={() => {
                         if (isValidPhoneNumber(this.state.enteringCrushPhone)) {
-                          // TODO send notification to crush
-                          // only allow user to send one notif
-
+                          // TODO make sure phone number is formatted correctly for rob
+                          this.props.sendNotificationToCrush(this.state.enteringCrushPhone, NotifTypes.TEXT_MESSAGE, /* callback */ null);
                         }
                       }}
                     >Send text
@@ -72,8 +96,7 @@ class Profile extends Component {
                     <Button className="send-notif-button"
                       onClick={() => {
                         if (isValidEmail(this.state.enteringCrushEmail)) {
-                          // TODO send email to crush1
-                          // only allow user to send once
+                          this.props.sendNotificationToCrush(this.state.enteringCrushEmail, NotifTypes.EMAIL, /* callback */ null);
                         }
                       }}
                     >Send email
@@ -89,12 +112,13 @@ class Profile extends Component {
           <div className="profile-nav">
             <img src={require('../img/icon.jpg')} alt="Love" className="logo" />
             <div className="user-info-container">
-              <div className="username-nav">@abandohess</div>
-              <img alt="Love" className="user-image" src="https://scontent-lga3-1.cdninstagram.com/vp/dd4022773eaee97d2439dc466f7f1cf9/5DB884A1/t51.2885-19/s320x320/53439421_300042017343002_8389409655645798400_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com" />
+              <div className="username-nav">{this.state.username}</div>
+              <img alt="Love" className="user-image" src={this.state.profilePicture} />
             </div>
           </div>
           <div className="enter-crush-container">
             <p className="subtitle">Add a Crush</p>
+
             <input className="input-bar"
               placeholder="@johnsmith"
               onChange={(event) => { this.setState({ enteringCrush: event.target.value }); }}
@@ -105,28 +129,43 @@ class Profile extends Component {
               className="add-crush-button"
               onClick={() => {
                 // TODO make call to backend
-                if (true /* added user has not signed up yet */) {
-                  this.setState({ isNotifyAddedUserModalOpen: true });
-                }
+                this.props.addCrush(this.props.id, this.state.enteringCrush, (crushHasAccount) => {
+                  if (!crushHasAccount) {
+                    this.setState({ isNotifyAddedUserModalOpen: true });
+                  } else {
+                    this.setState({
+                      enteringCrush: '',
+                    });
+                  }
+                  this.syncLocalStateWithReduxState();
+                });
             }}
             >
               Add
             </Button>
+            <p className="subsubtitle">{`${this.state.numCrushedOnUser} people have crushed on you`}</p>
           </div>
+
         </div>
         <div className="crush-info-container">
 
           <div className="crushes-container">
             <div className="your-crushes-header">Your Crushes</div>
-            {crushes.map((crush) => {
-              return <div key={crush}>{crush}</div>;
-            })}
+            {(this.state.crushes.length > 0 ?
+              this.state.crushes.map((crush) => {
+                return <div key={crush}>{crush}</div>;
+              }) :
+              <div className="not-entered">You have not crushed on anyone yet</div>
+            )}
           </div>
           <div className="crushes-container">
             <div className="your-crushes-header">Your Matches</div>
-            {crushes.map((crush) => {
-              return <div key={crush}>{crush}</div>;
-            })}
+            {(this.state.matches.length > 0 ?
+              this.state.matches.map((match) => {
+                return <div key={match}>{match}</div>;
+              }) :
+              <div className="not-entered">You have not matched with anyone yet</div>
+            )}
           </div>
         </div>
         <Footer />
@@ -139,7 +178,12 @@ const mapStateToProps = state => (
   {
     authenticated: state.auth.authenticated,
     id: state.auth.id,
+    profile_picture: state.user.profile_picture,
+    crushes: state.user.crushes,
+    matches: state.user.matches,
+    username: state.user.username,
+    num_crushed_on_user: state.user.num_crushed_on_user,
   }
 );
 
-export default withRouter(connect(mapStateToProps, { fetchUserData })(Profile));
+export default withRouter(connect(mapStateToProps, { fetchUserData, addCrush, sendNotificationToCrush })(Profile));
