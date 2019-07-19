@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-// export const ROOT_URL = 'https://second-chance-matches.herokuapp.com/api';
-export const ROOT_URL = 'http://localhost:9090/api';
+export const ROOT_URL = 'https://second-chance-matches.herokuapp.com/api';
+// export const ROOT_URL = 'http://localhost:9090/api';
 
 export const ActionTypes = {
   AUTHENTICATE: 'AUTHENTICATE',
@@ -25,11 +25,11 @@ export function signin(code, history, callback) {
       dispatch({ type: ActionTypes.AUTHENTICATE, payload: response.data.id });
 
       history.push('/profile');
-
+    }).catch((error) => {
+      // if sign in failed, we need to get rid of the preloader
       if (callback) {
         callback();
       }
-    }).catch((error) => {
       console.log(error, 'sign in failed');
       // dispatch(authError(`Sign In Failed: ${error}`));
     });
@@ -92,7 +92,11 @@ export function sendNotificationToCrush(/* email or phone number */ sendTo, noti
 
           // TODO wait for Rob to finish Twilio
           // maybe display success toast or something
-          toast.success('Notification sent to ', sendTo);
+          if (response.data.message && response.data.message.accountSid) {
+            toast.success(`Notification sent to ${sendTo}`);
+          } else {
+            toast.warning(`Could not send notification to ${sendTo} at this time`);
+          }
 
           if (callback) {
             callback();
@@ -111,7 +115,7 @@ export function sendNotificationToCrush(/* email or phone number */ sendTo, noti
           if (response.data.message === 'Successfully emailed crush.') {
             console.log('here');
             // TODO figure out why toasts don't show up :(
-            toast.success('Notification sent to ', sendTo);
+            toast.success(`Notification sent to ${sendTo}`);
           } else {
             toast.warning(`Could not send notification to ${sendTo} at this time`);
           }

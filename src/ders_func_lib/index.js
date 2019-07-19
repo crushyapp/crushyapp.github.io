@@ -10,7 +10,6 @@ export function getUrlVars() {
 export function isValidPhoneNumber(phoneNumber) {
   const phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   if ((phoneNumber.match(phoneno))) {
-    alert('sent text to crush');
     return true;
   } if (phoneNumber.replace(/\D/g, '').length !== 10) {
     alert('Your phone number must have 10 digits.');

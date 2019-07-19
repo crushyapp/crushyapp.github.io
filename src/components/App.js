@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
 
+
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+// import { getUrlVars } from '../ders_func_lib';
 
 // import { signin } from '../actions';
 // import { getUrlVars } from '../ders_func_lib';
