@@ -984,5 +984,37 @@ body > div {
   background-color: #E33E5C;
   opacity: .9; }
 
+.privacypolicy-icon-bar {
+  background-color: #E33E5C;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 70px; }
+
+.crushy-text {
+  margin-left: 15px;
+  font-size: 1.3em;
+  color: white; }
+
+.privacypolicy-header {
+  color: #2c3e50;
+  font-size: 3em;
+  margin-top: 30px;
+  text-align: center; }
+
+.privacypolicy-text {
+  color: #2c3e50;
+  font-size: 1.15em !important;
+  margin-top: -20px;
+  text-align: center !important;
+  width: 70%; }
+
+.privacypolicy-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 110px; }
+
 
 /*# sourceMappingURL=main.css.map*/
