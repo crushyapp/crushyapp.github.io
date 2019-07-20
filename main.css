@@ -891,9 +891,12 @@ body > div {
 .user-image {
   width: 40px;
   height: 40px;
-  margin-right: 15px;
+  margin-right: -2px;
   border-radius: 50%;
   border: 2px solid white; }
+
+.mydropdown {
+  margin-right: 20px; }
 
 .username-nav {
   margin-right: 10px; }
