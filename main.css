@@ -908,6 +908,7 @@ body > div {
 
 .input-bar {
   width: 40%;
+  min-width: 240px;
   height: 50px;
   outline-width: 0;
   border: none;
@@ -915,6 +916,12 @@ body > div {
   font-size: 1.5em !important;
   text-align: center;
   box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.05); }
+
+.add-crush-subtitle {
+  font-size: .9em;
+  font-style: italic;
+  text-align: center;
+  margin-top: 6px; }
 
 .add-crush-button {
   margin-top: 20px !important;
