@@ -874,10 +874,8 @@ body > div {
   min-height: 50%; }
 
 .logo {
-  width: 5%;
-  height: 5%;
-  min-width: 40px;
-  min-height: 40px;
+  width: 45px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid white;
   margin-left: 15px; }
