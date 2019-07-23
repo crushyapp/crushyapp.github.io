@@ -1029,6 +1029,9 @@ body > div {
   padding-top: 100px;
   padding-bottom: 110px; }
 
+.description {
+  max-width: 80%; }
+
 .close-notify-user {
   margin-top: 20px !important;
   background-color: #E33E5C !important;
