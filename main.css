@@ -770,7 +770,6 @@ body > div {
   background-color: #E33E5C;
   width: 100%;
   height: 60%;
-  top: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -791,11 +790,33 @@ body > div {
   margin-top: 30px;
   text-align: center; }
 
+.main-page-subtitle {
+  color: white;
+  font-size: 3em;
+  margin-top: 30px;
+  text-align: center; }
+
 .subsubtitle {
   color: white;
   font-size: 1.15em !important;
   margin-top: -20px;
   text-align: center !important; }
+
+.crushy-text-description {
+  max-width: 80%; }
+
+@media (max-width: 400px) {
+  .center-content {
+    margin-top: 60px;
+    min-width: 120px;
+    min-height: 98px;
+    border: 4px solid white; }
+  .main-page-subtitle {
+    font-size: 2.2em;
+    margin-top: 15px; }
+  .crushy-text-description {
+    margin-top: -25px;
+    font-size: .9em !important; } }
 
 .sign-up-container {
   display: flex;
@@ -1028,9 +1049,6 @@ body > div {
   align-items: center;
   padding-top: 100px;
   padding-bottom: 110px; }
-
-.crushy-text-description {
-  max-width: 80%; }
 
 .close-notify-user {
   margin-top: 20px !important;
